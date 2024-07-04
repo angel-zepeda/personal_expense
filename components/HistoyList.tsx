@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, ScrollView, FlatList } from 'react-native';
 import HistoryMock from '../data/history-mock.json';
 import { displayMoney } from '@/lib/utils';
-import { Colors } from '@/constants/Colors';
 import { Styledtext } from './StyledText';
 import { Divider } from './Divider';
 
@@ -18,14 +17,17 @@ const HistoryItem = ({ item }: HistoryItemType) => {
   const { title, amount, date } = item;
 
   return (
-    <View style={styles.historyItem}>
-      <View>
-        <Styledtext text={title} />
-        <Styledtext text={date} size='sm' />
+    <View>
+      <View style={styles.historyItem}>
+        <View>
+          <Styledtext text={title} />
+          <Styledtext text={date} size='sm' />
+        </View>
+        <View>
+          <Styledtext color='green' text={displayMoney(amount)} size='sm' />
+        </View>
       </View>
-      <View>
-        <Styledtext color='green' text={displayMoney(amount)} />
-      </View>
+      <Divider />
     </View>
   );
 };
@@ -48,5 +50,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

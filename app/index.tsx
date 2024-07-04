@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { View, ScrollView, StyleSheet, Pressable } from 'react-native';
 import PieChart from 'react-native-pie-chart';
 
 import { Card } from '@/components/Card';
 import { Colors } from '@/constants/Colors';
 import { Styledtext } from '@/components/StyledText';
-import { getDifferenceAmount } from '@/lib/utils';
+import { displayMoney, getDifferenceAmount } from '@/lib/utils';
 import { Divider } from '@/components/Divider';
 import { HistoryList } from '@/components/HistoyList';
+import Collapsible from 'react-native-collapsible';
 
 export default function Home() {
   const { color, amount } = getDifferenceAmount();
+  const [showHistory, setShowHistory] = useState(false);
+  const [showPendingP, setShowPendingP] = useState(false);
   const [pendingPayment, setPendingPayments] = useState(2);
   const widthAndHeight = 250;
   const series = [123, 321, 123, 89];
@@ -35,8 +38,13 @@ export default function Home() {
           </View>
         </View>
         <Divider />
+        <Styledtext
+          style={{ alignSelf: 'center', marginTop: 5 }}
+          text='Mensual'
+        />
+        <Styledtext style={{ alignSelf: 'center' }} text={displayMoney(1500)} />
         <PieChart
-          style={{ alignSelf: 'center', marginVertical: 30 }}
+          style={{ alignSelf: 'center', marginVertical: 25 }}
           widthAndHeight={widthAndHeight}
           series={series}
           sliceColor={sliceColor}
@@ -44,15 +52,32 @@ export default function Home() {
           coverFill={'#FFF'}
         />
       </Card>
+
       <Card>
-        <View style={styles.container}>
-          <Styledtext text='Historial' size='lg' />
-          <HistoryList />
+        <View>
+          <View style={styles.container}>
+            <Pressable onPress={() => setShowHistory(!showHistory)}>
+              <View style={styles.textSpacedBetween}>
+                <Styledtext text='Historial' size='lg' />
+                <Styledtext text={displayMoney(700)} />
+              </View>
+            </Pressable>
+          </View>
+          <Divider />
+          <Collapsible collapsed={showHistory} style={styles.container}>
+            <HistoryList />
+          </Collapsible>
         </View>
       </Card>
+
       <Card>
         <View style={styles.container}>
-          <Styledtext text='Pagos pendientes' size='lg' />
+          <Pressable onPress={() => setShowPendingP(!showPendingP)}>
+            <View style={styles.textSpacedBetween}>
+              <Styledtext text='Pagos Pendientes' size='lg' />
+              <Styledtext text='2' color='red' />
+            </View>
+          </Pressable>
         </View>
       </Card>
     </ScrollView>
@@ -63,11 +88,15 @@ const styles = StyleSheet.create({
   container: {
     padding: 15,
     flex: 1,
-    backgroundColor: '#fff',
     color: Colors.light.text,
   },
   pendingPayments: {
     borderLeftColor: Colors.red,
     borderLeftWidth: 5,
+  },
+  textSpacedBetween: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

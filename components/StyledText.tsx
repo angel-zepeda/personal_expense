@@ -34,14 +34,14 @@ export const Styledtext = ({ size = 'md', color, text, style }: Props) => {
 const styles = StyleSheet.create({
   sm: {
     fontSize: 12,
-    paddingVertical: 5,
+    paddingVertical: 3,
   },
   md: {
     fontSize: 16,
-    paddingVertical: 5,
+    paddingVertical: 3,
   },
   lg: {
     fontSize: 20,
-    paddingVertical: 5,
+    paddingVertical: 3,
   },
 });

@@ -13,7 +13,7 @@ export function Card({ children }: CardProps) {
 const styles = StyleSheet.create({
   container: {
     marginVertical: 5,
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5',
     borderRadius: 3,
     shadowColor: '#171717',
     shadowOffset: { width: -2, height: 1 },
