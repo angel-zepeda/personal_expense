@@ -1,0 +1,46 @@
+{
+  "history": [
+    {
+      "id": 1,
+      "title": "Pagar casa",
+      "date": "2020-02-02",
+      "amount": 100
+    },
+    {
+      "id": 2,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    },
+    {
+      "id": 3,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    },
+    {
+      "id": 4,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    },
+    {
+      "id": 5,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    },
+    {
+      "id": 6,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    },
+    {
+      "id": 7,
+      "title": "Pagar netflix",
+      "date": "2020-02-02",
+      "amount": 200
+    }
+  ]
+}

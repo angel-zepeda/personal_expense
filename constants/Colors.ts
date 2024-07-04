@@ -6,9 +6,16 @@
 const tintColorLight = '#0a7ea4';
 const tintColorDark = '#fff';
 
+export type ColorsType = 'red' | 'green' | 'yellow' | 'blue' | 'primary';
+
 export const Colors = {
+  green: '#24BA49',
+  red: '#F94144',
+  primary: '#56CCF2',
+  blue: '#2C36F3',
+  yellow: '#ECDE21',
   light: {
-    text: '#11181C',
+    text: '#4F4F4F',
     background: '#fff',
     tint: tintColorLight,
     icon: '#687076',
