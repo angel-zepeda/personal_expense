@@ -21,7 +21,7 @@ const HistoryItem = ({ item }: HistoryItemType) => {
       <View style={styles.historyItem}>
         <View>
           <Styledtext text={title} />
-          <Styledtext text={date} size='sm' />
+          <Styledtext text={`Pagado: ${date}`} size='sm' />
         </View>
         <View>
           <Styledtext color='green' text={displayMoney(amount)} size='sm' />

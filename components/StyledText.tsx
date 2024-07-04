@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const Styledtext = ({ size = 'md', color, text, style }: Props) => {
-  console.log(style);
   return (
     <Text
       style={[

@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, ScrollView, StyleSheet, Pressable } from 'react-native';
 import PieChart from 'react-native-pie-chart';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 import { Card } from '@/components/Card';
 import { Colors } from '@/constants/Colors';
@@ -21,16 +24,31 @@ export default function Home() {
 
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.pendingPayments}>
-        <Styledtext
-          text={`Tienes ${pendingPayment} pagos pendientes`}
-          size='lg'
-          style={{ marginLeft: 2 }}
+      <View style={styles.textSpacedBetween}>
+        <View style={styles.pendingPayments}>
+          <Styledtext
+            text={`Tienes ${pendingPayment} pagos pendientes`}
+            size='lg'
+            style={{ marginLeft: 2 }}
+          />
+        </View>
+        <FontAwesome6
+          name='add'
+          size={18}
+          color={Colors.blue}
+          style={{ marginRight: 2 }}
         />
       </View>
       <Card>
         <View style={styles.container}>
-          <Styledtext text='Gastos' size='lg' />
+          <View style={styles.textSpacedBetween}>
+            <Styledtext text='Gastos' size='lg' />
+            <Ionicons
+              name='document-text-outline'
+              size={24}
+              color={Colors.blue}
+            />
+          </View>
           <View style={{ display: 'flex', flexDirection: 'row' }}>
             <Styledtext text='Mes actual' size='sm' />
             <Styledtext text={` ${amount}`} color={color} size='sm' />
@@ -58,8 +76,22 @@ export default function Home() {
           <View style={styles.container}>
             <Pressable onPress={() => setShowHistory(!showHistory)}>
               <View style={styles.textSpacedBetween}>
-                <Styledtext text='Historial' size='lg' />
-                <Styledtext text={displayMoney(700)} />
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: 5,
+                  }}
+                >
+                  <Styledtext text='Historial' size='lg' />
+                  <Styledtext text={displayMoney(700)} />
+                </View>
+                <AntDesign
+                  name={showHistory ? 'down' : 'up'}
+                  size={14}
+                  color='black'
+                />
               </View>
             </Pressable>
           </View>
@@ -74,8 +106,21 @@ export default function Home() {
         <View style={styles.container}>
           <Pressable onPress={() => setShowPendingP(!showPendingP)}>
             <View style={styles.textSpacedBetween}>
-              <Styledtext text='Pagos Pendientes' size='lg' />
-              <Styledtext text='2' color='red' />
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+              >
+                <Styledtext text='Pagos pendientes' size='lg' />
+              </View>
+              <AntDesign
+                name={showPendingP ? 'down' : 'up'}
+                size={14}
+                color='black'
+              />
             </View>
           </Pressable>
         </View>
@@ -98,5 +143,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignContent: 'center',
   },
 });
